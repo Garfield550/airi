@@ -10,7 +10,9 @@
       "windows": {
         "runtimeExecutable": "${workspaceRoot}/apps/stage-tamagotchi/node_modules/.bin/electron-vite.cmd"
       },
-      "runtimeArgs": ["--sourcemap"],
+      "runtimeArgs": [
+        "--sourcemap"
+      ],
       "env": {
         "REMOTE_DEBUGGING_PORT": "9222"
       }
@@ -21,9 +23,15 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/services/minecraft",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
-      "args": ["--env-file=.env", "--env-file-if-exists=.env.local", "src/main.ts"],
+      "args": [
+        "--env-file=.env",
+        "--env-file-if-exists=.env.local",
+        "src/main.ts"
+      ],
       "envFile": "${workspaceFolder}/services/minecraft/.env",
-      "skipFiles": ["<node_internals>/**"]
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
     },
     {
       "name": "Debug Renderer Process",
@@ -46,6 +54,36 @@
       "outFiles": [
         "${workspaceFolder}/plugins/airi-plugin-vscode/dist/**/*.cjs"
       ]
+    },
+    {
+      "name": "Debug macOS sensor-helper",
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:airi}/plugins/airi-plugin-sensor-macos/sensor-helper",
+      "target": "sensor-helper",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug sensor-helper (plugins/airi-plugin-sensor-macos/sensor-helper)"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:airi}/plugins/airi-plugin-sensor-macos/sensor-helper",
+      "name": "Debug airi-sensor-helper (plugins/airi-plugin-sensor-macos/sensor-helper)",
+      "target": "airi-sensor-helper",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug airi-sensor-helper (plugins/airi-plugin-sensor-macos/sensor-helper)"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:airi}/plugins/airi-plugin-sensor-macos/sensor-helper",
+      "name": "Release airi-sensor-helper (plugins/airi-plugin-sensor-macos/sensor-helper)",
+      "target": "airi-sensor-helper",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release airi-sensor-helper (plugins/airi-plugin-sensor-macos/sensor-helper)"
     }
   ],
   "compounds": [
